@@ -6,7 +6,7 @@ import { MantineProvider } from "@mantine/core";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MantineProvider theme={{ fontFamily: `'SemyBold`, fontWeight: 400 }}>
+    <MantineProvider theme={{ fontFamily: `'SemyBold` }}>
       <App />
     </MantineProvider>
   </StrictMode>

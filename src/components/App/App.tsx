@@ -1,24 +1,27 @@
-// import { useState } from "react";
 import "@mantine/core/styles.css";
-import { Button } from "@mantine/core";
 import "./App.scss";
-import logo from "../shared/pictures/logo.png";
+import { useEffect, useState } from "react";
+import Header from "../widgets/Header/Header";
+import CreatorCard from "../entities/CreatorCard/CreatorCard";
+import vegetableList, { type vegetableListType } from "../shared/Data/Data";
 
 function App() {
+  const [cartValue, setCartValue] = useState(0);
+  const [vegetables, setVegetables] = useState<vegetableListType[]>([]);
+
+  useEffect(() => {
+    setVegetables(vegetableList);
+    return () => {
+      setVegetables([]);
+    };
+  }, []);
+
   return (
     <>
-      <header>
-        <img src={logo}></img>
-        <Button variant="filled" color="#54B46A">
-          Cart
-          <img />
-        </Button>
-      </header>
+      <Header cartValue={cartValue} />
       <main>
         <h2 className="head-catalog">Catalog</h2>
-        <div>
-          <p>more cards</p>
-        </div>
+        <CreatorCard vegetables={vegetables} />
       </main>
     </>
   );
