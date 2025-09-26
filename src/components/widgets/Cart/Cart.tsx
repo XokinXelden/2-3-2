@@ -1,16 +1,14 @@
-import { Card, Flex, Image, Text, Group } from "@mantine/core";
+import { Card, Flex, Image, Text, Group, Divider } from "@mantine/core";
 import emptyCart from "../../shared/pictures/Cart Empty.png";
 import "./Cart.scss";
 import ButtonPlusMinus from "../../shared/ButtonPlusMinus/ButtonPlusMinus";
 import type { HeadButtonType } from "../Header/Header";
-import { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import type { cartContentsType } from "../../App/App";
+import cartContentsContext from "../../features/cartCountersContext";
 
-function Cart({
-  cartContents,
-  clickMinusInCart,
-  clickPlusInCart,
-}: HeadButtonType) {
+function Cart({ clickMinusInCart, clickPlusInCart }: HeadButtonType) {
+  const cartContents: cartContentsType[] = useContext(cartContentsContext);
   const [fullPrice, setFullPrice] = useState<number>(0);
 
   useEffect(() => {
@@ -54,31 +52,38 @@ function Cart({
       withBorder
       w={445}
       mih={225}
+      pt={45}
     >
-      <Card.Section>
-        {cartContents.map((elem) => {
+      <Card.Section mb={6}>
+        {cartContents.map((elem, i) => {
           return (
-            <Flex key={elem.id} justify="space-between" pl={15} pr={25}>
-              <Group>
-                <Image src={elem.image} h={75} w={75} fit="contain" />
-                <Flex direction="column">
-                  <Text>{elem.vegetableName}</Text>
-                  <Text>$ {elem.middlePrice}</Text>
-                </Flex>
-              </Group>
-              <Group>
-                <ButtonPlusMinus
-                  id={elem.id}
-                  clickPlus={clickPlusInCart}
-                  clickMinus={clickMinusInCart}
-                  count={elem.count}
-                />
-              </Group>
-            </Flex>
+            <React.Fragment key={elem.id}>
+              <Flex justify="space-between" pl={15} pr={25}>
+                <Group>
+                  <Image src={elem.image} h={75} w={75} fit="contain" />
+                  <Flex direction="column" align="center">
+                    <Text>{elem.vegetableName}</Text>
+                    <Text>$ {elem.middlePrice}</Text>
+                  </Flex>
+                </Group>
+                <Group align="center" pt={20}>
+                  <ButtonPlusMinus
+                    id={elem.id}
+                    clickPlus={clickPlusInCart}
+                    clickMinus={clickMinusInCart}
+                    count={elem.count}
+                  />
+                </Group>
+              </Flex>
+              {i < cartContents.length - 1 && (
+                <Divider w="75%" ml="auto" mr={25} />
+              )}
+            </React.Fragment>
           );
         })}
       </Card.Section>
-      <Group justify="space-between" w="100%">
+      <Divider mt="auto" mr={5} ml={5} />
+      <Group justify="space-between" w="100%" mt={5} pl={10} pr={10} pt={10}>
         <Text>Total</Text>
         <Text>${fullPrice}</Text>
       </Group>

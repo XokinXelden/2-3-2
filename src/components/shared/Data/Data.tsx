@@ -18,7 +18,7 @@ export type vegetableListType = {
 
 const vegetableList = [
   {
-    id: "1",
+    id: 1,
     vegetableName: "Carrot",
     image: image["../pictures/Vegetable/Carrot.png"].default,
     price: 100,
@@ -26,7 +26,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "2",
+    id: 2,
     vegetableName: "Potato",
     image: image["../pictures/Vegetable/Potato.png"].default,
     price: 100,
@@ -34,7 +34,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "3",
+    id: 3,
     vegetableName: "Apple",
     image: image["../pictures/Vegetable/Apple.png"].default,
     price: 20,
@@ -42,7 +42,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "4",
+    id: 4,
     vegetableName: "Banana",
     image: image["../pictures/Vegetable/Banana.png"].default,
     price: 33,
@@ -50,7 +50,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "5",
+    id: 5,
     vegetableName: "Grape",
     image: image["../pictures/Vegetable/Grape.png"].default,
     price: 77,
@@ -58,7 +58,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "6",
+    id: 6,
     vegetableName: "Beans",
     image: image["../pictures/Vegetable/Beans.png"].default,
     price: 23,
@@ -66,7 +66,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "7",
+    id: 7,
     vegetableName: "Onion",
     image: image["../pictures/Vegetable/Onion.png"].default,
     price: 10,
@@ -74,7 +74,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "8",
+    id: 8,
     vegetableName: "Melon",
     image: image["../pictures/Vegetable/Melon.png"].default,
     price: 100,
@@ -82,7 +82,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "9",
+    id: 9,
     vegetableName: "Water Melon",
     image: image["../pictures/Vegetable/Water Melon.png"].default,
     price: 100,
@@ -90,7 +90,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "10",
+    id: 10,
     vegetableName: "Mushroom",
     image: image["../pictures/Vegetable/Mushroom.png"].default,
     price: 66,
@@ -98,7 +98,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "11",
+    id: 11,
     vegetableName: "Pista",
     image: image["../pictures/Vegetable/Pista.png"].default,
     price: 100,
@@ -106,7 +106,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "12",
+    id: 12,
     vegetableName: "Pear",
     image: image["../pictures/Vegetable/Pear.png"].default,
     price: 100,
@@ -114,7 +114,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "13",
+    id: 13,
     vegetableName: "Pomegranate",
     image: image["../pictures/Vegetable/Pomegranate.png"].default,
     price: 100,
@@ -122,7 +122,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "14",
+    id: 14,
     vegetableName: "Pumpkin",
     image: image["../pictures/Vegetable/Pumpkin.png"].default,
     price: 100,
@@ -130,7 +130,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "15",
+    id: 15,
     vegetableName: "Tomato",
     image: image["../pictures/Vegetable/Tomato.png"].default,
     price: 100,
@@ -138,7 +138,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "16",
+    id: 16,
     vegetableName: "Orange",
     image: image["../pictures/Vegetable/Orange.png"].default,
     price: 100,
@@ -146,7 +146,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "17",
+    id: 17,
     vegetableName: "Nutd Mixture",
     image: image["../pictures/Vegetable/Nuts Mixture.png"].default,
     price: 100,
@@ -154,7 +154,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "18",
+    id: 18,
     vegetableName: "Radish",
     image: image["../pictures/Vegetable/Radish.png"].default,
     price: 100,
@@ -162,7 +162,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "19",
+    id: 19,
     vegetableName: "Walnuts",
     image: image["../pictures/Vegetable/Walnuts.png"].default,
     price: 100,
@@ -170,7 +170,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "20",
+    id: 20,
     vegetableName: "Strawberry",
     image: image["../pictures/Vegetable/Strawberry.png"].default,
     price: 100,
@@ -178,7 +178,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "21",
+    id: 21,
     vegetableName: "Raspberry",
     image: image["../pictures/Vegetable/Raspberry.png"].default,
     price: 100,
@@ -186,7 +186,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "22",
+    id: 22,
     vegetableName: "Mango",
     image: image["../pictures/Vegetable/Mango.png"].default,
     price: 100,
@@ -194,7 +194,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "23",
+    id: 23,
     vegetableName: "Green Bell Pepper",
     image: image["../pictures/Vegetable/Green Bell Pepper.png"].default,
     price: 100,
@@ -202,7 +202,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "24",
+    id: 24,
     vegetableName: "Corn",
     image: image["../pictures/Vegetable/Corn.png"].default,
     price: 100,
@@ -210,7 +210,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "25",
+    id: 25,
     vegetableName: "Cucumber",
     image: image["../pictures/Vegetable/Cucumber.png"].default,
     price: 100,
@@ -218,7 +218,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "26",
+    id: 26,
     vegetableName: "Cauliflower",
     image: image["../pictures/Vegetable/Potato.png"].default,
     price: 100,
@@ -226,7 +226,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "27",
+    id: 27,
     vegetableName: "Cashews",
     image: image["../pictures/Vegetable/Cashews.png"].default,
     price: 100,
@@ -234,7 +234,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "28",
+    id: 28,
     vegetableName: "Brinjal",
     image: image["../pictures/Vegetable/Brinjal.png"].default,
     price: 100,
@@ -242,7 +242,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "29",
+    id: 29,
     vegetableName: "Brocoli",
     image: image["../pictures/Vegetable/Brocoli.png"].default,
     price: 100,
@@ -250,7 +250,7 @@ const vegetableList = [
     availability: true,
   },
   {
-    id: "30",
+    id: 30,
     vegetableName: "Almonds",
     image: image["../pictures/Vegetable/Almonds.png"].default,
     price: 100,

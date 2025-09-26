@@ -1,31 +1,15 @@
-import { Button, Card, Center, Flex, Image, Text, Group } from "@mantine/core";
-import type { vegetableListType } from "../../shared/Data/Data";
-import greenCart from "../../shared/pictures/Button/Green Cart.png";
-
-import "./CreatorCart.scss";
+import { Button, Card, Center, Flex, Group, Image, Text } from "@mantine/core";
 import ButtonPlusMinus from "../../shared/ButtonPlusMinus/ButtonPlusMinus";
+import greenCart from "../../shared/pictures/Button/Green Cart.png";
+import type { CardCreateProps } from "./CreatorCard";
 
-export type ClickType = {
-  clickPlus: (id: number) => void;
-  clickMinus: (id: number) => void;
-  setCartContents: () => void;
-};
-type CardCreateProps = {
-  vegetables: vegetableListType[];
-  vegetablesCount: Record<number, number>;
-  addItemToCart: (id: number, count: number) => void;
-} & ClickType;
-
-function CreatorCard({
+function ReadyCard({
   vegetables,
+  vegetablesCount,
   clickPlus,
   clickMinus,
-  vegetablesCount,
-  addItemToCart,
+  handleAddItemToCart,
 }: CardCreateProps) {
-  if (vegetables.length === 0) {
-    return <h2>Все товары были бесцеремонно украдены :С</h2>;
-  }
   return (
     <>
       {vegetables.map((elem) => {
@@ -36,8 +20,8 @@ function CreatorCard({
             padding="lg"
             radius="lg"
             withBorder
-            w={312}
-            h={412}
+            w={325}
+            h={422}
           >
             <Card.Section>
               <Image src={elem.image} fit="contain" />
@@ -70,7 +54,7 @@ function CreatorCard({
                   rightSection={<img src={greenCart} />}
                   style={{ width: "172px" }}
                   onClick={() =>
-                    addItemToCart(elem.id, vegetablesCount[elem.id])
+                    handleAddItemToCart(elem.id, vegetablesCount[elem.id])
                   }
                 >
                   add to cart
@@ -83,4 +67,4 @@ function CreatorCard({
     </>
   );
 }
-export default CreatorCard;
+export default ReadyCard;

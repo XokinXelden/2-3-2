@@ -4,7 +4,6 @@ import logo from "../../shared/pictures/logo.png";
 import Cart from "../Cart/Cart";
 
 export type HeadButtonType = {
-  cartContents: cartContentsType;
   clickMinusInCart: (id: number) => void;
   clickPlusInCart: (id: number) => void;
 };
@@ -12,23 +11,14 @@ type HeaderType = {
   cartValue: number;
 } & HeadButtonType;
 
-function Header({
-  cartValue,
-  cartContents,
-  clickMinusInCart,
-  clickPlusInCart,
-}: HeaderType) {
+function Header({ cartValue, clickMinusInCart, clickPlusInCart }: HeaderType) {
   const [cartShow, setCartShow] = useState<boolean>(false);
   function onCart() {
     setCartShow(!cartShow);
   }
   return (
     <>
-      <header
-        onClick={() => {
-          console.log(cartContents);
-        }}
-      >
+      <header>
         <img src={logo}></img>
         <MarketButton
           cartValue={cartValue}
@@ -39,7 +29,6 @@ function Header({
       </header>
       {cartShow && (
         <Cart
-          cartContents={cartContents}
           clickMinusInCart={clickMinusInCart}
           clickPlusInCart={clickPlusInCart}
         />
