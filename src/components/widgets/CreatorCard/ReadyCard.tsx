@@ -15,6 +15,7 @@ function ReadyCard({
       {vegetables.map((elem) => {
         return (
           <Card
+            data-testid={elem.vegetableName}
             key={elem.id}
             shadow="md"
             padding="lg"

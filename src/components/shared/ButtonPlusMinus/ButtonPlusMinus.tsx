@@ -18,6 +18,7 @@ function ButtonPlusMinus({
     <div>
       <Flex align="center" gap={4} style={{ fontSize: "15px" }}>
         <ActionIcon
+          aria-label="-item"
           onClick={() => {
             clickMinus(id);
           }}
@@ -31,6 +32,7 @@ function ButtonPlusMinus({
         </ActionIcon>
         {count}
         <ActionIcon
+          aria-label="+item"
           onClick={() => {
             clickPlus(id);
           }}

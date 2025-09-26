@@ -12,7 +12,7 @@ export default function useLoadingHook(): LoadingHookType {
     const timer = setTimeout(() => {
       setVegetables(vegetableList);
       setLoading(false);
-    }, 5000);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);

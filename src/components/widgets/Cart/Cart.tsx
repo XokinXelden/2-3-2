@@ -24,6 +24,7 @@ function Cart({ clickMinusInCart, clickPlusInCart }: HeadButtonType) {
   if (cartContents.length === 0) {
     return (
       <Card
+        data-testid="cart"
         className="cart"
         shadow="sm"
         padding="lg"
@@ -45,6 +46,7 @@ function Cart({ clickMinusInCart, clickPlusInCart }: HeadButtonType) {
   }
   return (
     <Card
+      data-testid="cart"
       className="cart"
       shadow="sm"
       padding="lg"
