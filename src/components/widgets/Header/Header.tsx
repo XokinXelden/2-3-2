@@ -3,14 +3,32 @@ import MarketButton from "../../shared/Button/MarketButton";
 import logo from "../../shared/pictures/logo.png";
 import Cart from "../Cart/Cart";
 
-function Header({ cartValue }: { cartValue: number }) {
+export type HeadButtonType = {
+  cartContents: cartContentsType;
+  clickMinusInCart: (id: number) => void;
+  clickPlusInCart: (id: number) => void;
+};
+type HeaderType = {
+  cartValue: number;
+} & HeadButtonType;
+
+function Header({
+  cartValue,
+  cartContents,
+  clickMinusInCart,
+  clickPlusInCart,
+}: HeaderType) {
   const [cartShow, setCartShow] = useState<boolean>(false);
   function onCart() {
     setCartShow(!cartShow);
   }
   return (
     <>
-      <header>
+      <header
+        onClick={() => {
+          console.log(cartContents);
+        }}
+      >
         <img src={logo}></img>
         <MarketButton
           cartValue={cartValue}
@@ -19,7 +37,13 @@ function Header({ cartValue }: { cartValue: number }) {
           onClick={onCart}
         />
       </header>
-      {cartShow && <Cart />}
+      {cartShow && (
+        <Cart
+          cartContents={cartContents}
+          clickMinusInCart={clickMinusInCart}
+          clickPlusInCart={clickPlusInCart}
+        />
+      )}
     </>
   );
 }
