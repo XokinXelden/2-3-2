@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MarketButton from "../../shared/Button/MarketButton";
 import logo from "../../shared/pictures/logo.png";
-import Cart from "../Cart/Cart";
+import CartShower from "../Cart/CartShower";
 
 export type HeadButtonType = {
   clickMinusInCart: (id: number) => void;
@@ -9,9 +9,9 @@ export type HeadButtonType = {
 };
 type HeaderType = {
   cartValue: number;
-} & HeadButtonType;
+};
 
-function Header({ cartValue, clickMinusInCart, clickPlusInCart }: HeaderType) {
+function Header({ cartValue }: HeaderType) {
   const [cartShow, setCartShow] = useState<boolean>(false);
   function onCart() {
     setCartShow(!cartShow);
@@ -27,12 +27,7 @@ function Header({ cartValue, clickMinusInCart, clickPlusInCart }: HeaderType) {
           onClick={onCart}
         />
       </header>
-      {cartShow && (
-        <Cart
-          clickMinusInCart={clickMinusInCart}
-          clickPlusInCart={clickPlusInCart}
-        />
-      )}
+      {cartShow && <CartShower />}
     </>
   );
 }

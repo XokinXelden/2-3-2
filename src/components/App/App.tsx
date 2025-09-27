@@ -35,12 +35,10 @@ function App() {
 
   return (
     <>
-      <cartContentsContext.Provider value={cartContents}>
-        <Header
-          cartValue={cartValue}
-          clickPlusInCart={clickPlusInCart}
-          clickMinusInCart={clickMinusInCart}
-        />
+      <cartContentsContext.Provider
+        value={[cartContents, clickMinusInCart, clickPlusInCart]}
+      >
+        <Header cartValue={cartValue} />
       </cartContentsContext.Provider>
       <Container size="100%" mt={90} pl={145} bg="#e9ecef">
         <h2 className="head-catalog">Catalog</h2>

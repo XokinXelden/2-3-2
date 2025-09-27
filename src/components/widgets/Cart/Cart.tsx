@@ -1,14 +1,17 @@
-import { Card, Flex, Image, Text, Group, Divider } from "@mantine/core";
-import emptyCart from "../../shared/pictures/Cart Empty.png";
-import "./Cart.scss";
-import ButtonPlusMinus from "../../shared/ButtonPlusMinus/ButtonPlusMinus";
+import { Card, Divider, Flex, Group, Image, Text } from "@mantine/core";
 import type { HeadButtonType } from "../Header/Header";
-import React, { useContext, useEffect, useState } from "react";
 import type { cartContentsType } from "../../App/App";
-import cartContentsContext from "../../features/cartCountersContext";
+import React, { useEffect, useState } from "react";
+import ButtonPlusMinus from "../../shared/ButtonPlusMinus/ButtonPlusMinus";
+type PriceType = {
+  cartContents: cartContentsType[];
+};
 
-function Cart({ clickMinusInCart, clickPlusInCart }: HeadButtonType) {
-  const cartContents: cartContentsType[] = useContext(cartContentsContext);
+function Cart({
+  cartContents,
+  clickMinusInCart,
+  clickPlusInCart,
+}: HeadButtonType & PriceType) {
   const [fullPrice, setFullPrice] = useState<number>(0);
 
   useEffect(() => {
@@ -20,30 +23,6 @@ function Cart({ clickMinusInCart, clickPlusInCart }: HeadButtonType) {
     );
     setFullPrice(newPrice);
   }, [cartContents]);
-
-  if (cartContents.length === 0) {
-    return (
-      <Card
-        data-testid="cart"
-        className="cart"
-        shadow="sm"
-        padding="lg"
-        radius="md"
-        withBorder
-        w={300}
-        h={225}
-      >
-        <Flex direction="column" align="center">
-          <Card.Section>
-            <Image src={emptyCart} h="105" w="115px" fit="contain" />
-          </Card.Section>
-          <Text style={{ color: "#a4aab0", fontSize: "14px" }}>
-            Your cart is empty!
-          </Text>
-        </Flex>
-      </Card>
-    );
-  }
   return (
     <Card
       data-testid="cart"
@@ -92,4 +71,5 @@ function Cart({ clickMinusInCart, clickPlusInCart }: HeadButtonType) {
     </Card>
   );
 }
+
 export default Cart;
