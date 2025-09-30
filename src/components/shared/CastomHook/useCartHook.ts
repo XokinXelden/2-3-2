@@ -1,18 +1,21 @@
 import type { cartContentsType } from "../../App/App";
-import type { vegetableListType } from "../Data/Data";
-import { useState, useEffect } from "react";
 
-type CartHookReturn = [
-  cartContentsType[],
-  number,
-  (id: number, count: number) => void,
-  (id: number) => void,
-  (id: number) => void
-];
+import { useState, useEffect } from "react";
+import type { vegetableListType } from "./useLoadinHook";
+
+export type CartHookReturn = {
+  cartContents: cartContentsType[];
+  clickPlusInCart: (id: number) => void;
+  clickMinusInCart: (id: number) => void;
+};
+type addCartType = {
+  addItemToCart: (id: number, count: number) => void;
+  cartValue: number;
+};
 
 export default function useCartHook(
   vegetables: vegetableListType[]
-): CartHookReturn {
+): CartHookReturn & addCartType {
   const [cartContents, setCartContents] = useState<cartContentsType[]>([]);
   const [cartValue, setCartValue] = useState(0);
 
@@ -23,11 +26,25 @@ export default function useCartHook(
       }, 0)
     );
   }, [cartContents]);
+  const converterWeightToNum = (veg: vegetableListType) => {
+    const weightSplit = veg.weight.split(" ");
+    const [weight] = weightSplit;
+    const weightNum: number = weight === "1" ? 1 : 0.25;
+    return weightNum;
+  };
+  const newPrice = (
+    sign: "-" | "+",
+    veg: vegetableListType,
+    item: cartContentsType
+  ) => {
+    return sign === "-"
+      ? veg.price * Math.max(0, item.count - 1)
+      : veg.price * Math.max(0, item.count + 1);
+  };
   const addItemToCart = (id: number, count: number) => {
     if (count === 0) return;
-    const veg = vegetables.find((v) => v.id === id);
+    const veg = vegetables.find((item) => item.id === id);
     if (!veg) return;
-
     setCartContents((prev) => {
       const existingItem = prev.find((item) => item.id === id);
       if (existingItem) {
@@ -36,7 +53,7 @@ export default function useCartHook(
             ? {
                 ...item,
                 count: item.count + count,
-                middlePrice: veg.price * (item.count + count),
+                middlePrice: newPrice("+", veg, item),
               }
             : item
         );
@@ -45,8 +62,9 @@ export default function useCartHook(
           ...prev,
           {
             id: veg.id,
-            vegetableName: veg.vegetableName,
+            name: veg.name,
             image: veg.image,
+            weight: `${converterWeightToNum(veg) * count} Kg`,
             middlePrice: veg.price * count,
             count: count,
           },
@@ -64,8 +82,9 @@ export default function useCartHook(
         if (item.id === id) {
           return {
             ...item,
+            weight: `${converterWeightToNum(veg) * (item.count + 1)} Kg`,
             count: item.count + 1,
-            middlePrice: veg.price * (item.count + 1),
+            middlePrice: newPrice("+", veg, item),
           };
         }
         return item;
@@ -84,8 +103,9 @@ export default function useCartHook(
           if (item.id === id) {
             return {
               ...item,
+              weight: `${converterWeightToNum(veg) * (item.count - 1)} Kg`,
               count: Math.max(0, item.count - 1),
-              middlePrice: veg.price * Math.max(0, item.count - 1),
+              middlePrice: newPrice("-", veg, item),
             };
           }
           return item;
@@ -93,11 +113,11 @@ export default function useCartHook(
         .filter((item: cartContentsType) => item.count > 0)
     );
   };
-  return [
+  return {
     cartContents,
     cartValue,
     addItemToCart,
     clickPlusInCart,
     clickMinusInCart,
-  ];
+  };
 }

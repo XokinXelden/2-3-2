@@ -1,9 +1,11 @@
 import { Card, Flex, Image, Text } from "@mantine/core";
 import emptyCart from "../../shared/pictures/Cart Empty.png";
+import type { RefType } from "./CartShower";
 
-function EmptyCart() {
+function EmptyCart({ dropdownRef }: RefType) {
   return (
     <Card
+      ref={dropdownRef}
       data-testid="cart"
       className="cart"
       shadow="sm"

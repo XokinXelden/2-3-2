@@ -3,15 +3,18 @@ import type { HeadButtonType } from "../Header/Header";
 import type { cartContentsType } from "../../App/App";
 import React, { useEffect, useState } from "react";
 import ButtonPlusMinus from "../../shared/ButtonPlusMinus/ButtonPlusMinus";
-type PriceType = {
+import type { RefType } from "./CartShower";
+
+type CartType = {
   cartContents: cartContentsType[];
-};
+} & RefType;
 
 function Cart({
+  dropdownRef,
   cartContents,
   clickMinusInCart,
   clickPlusInCart,
-}: HeadButtonType & PriceType) {
+}: HeadButtonType & CartType) {
   const [fullPrice, setFullPrice] = useState<number>(0);
 
   useEffect(() => {
@@ -25,6 +28,7 @@ function Cart({
   }, [cartContents]);
   return (
     <Card
+      ref={dropdownRef}
       data-testid="cart"
       className="cart"
       shadow="sm"
@@ -42,8 +46,13 @@ function Cart({
               <Flex justify="space-between" pl={15} pr={25}>
                 <Group>
                   <Image src={elem.image} h={75} w={75} fit="contain" />
-                  <Flex direction="column" align="center">
-                    <Text>{elem.vegetableName}</Text>
+                  <Flex direction="column" align="flex-start">
+                    <Group>
+                      <Text>{elem.name}</Text>
+                      <Text color="gray" size="xs">
+                        {elem.weight}
+                      </Text>
+                    </Group>
                     <Text>$ {elem.middlePrice}</Text>
                   </Flex>
                 </Group>

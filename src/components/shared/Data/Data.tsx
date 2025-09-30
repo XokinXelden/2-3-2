@@ -7,15 +7,6 @@ type ImageType = {
   };
 };
 
-export type vegetableListType = {
-  id: number;
-  vegetableName: string;
-  image: string;
-  price: number;
-  minWeight: string;
-  availability: boolean;
-};
-
 const vegetableList = [
   {
     id: 1,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { vegetableListType } from "../Data/Data";
+import type { vegetableListType } from "./useLoadinHook";
 
 type vegetablesCountType = [
   vegetablesCount: Record<number, number>,

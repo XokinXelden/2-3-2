@@ -1,7 +1,12 @@
 import { Button, Card, Center, Flex, Group, Image, Text } from "@mantine/core";
 import ButtonPlusMinus from "../../shared/ButtonPlusMinus/ButtonPlusMinus";
 import greenCart from "../../shared/pictures/Button/Green Cart.png";
-import type { CardCreateProps } from "./CreatorCard";
+import type { CardCreateProps, ClickType } from "./CreatorCard";
+
+type handleAddItemToCartType = {
+  handleAddItemToCart: (id: number, count: number) => void;
+  vegetablesCount: Record<number, number>;
+} & ClickType;
 
 function ReadyCard({
   vegetables,
@@ -9,13 +14,13 @@ function ReadyCard({
   clickPlus,
   clickMinus,
   handleAddItemToCart,
-}: CardCreateProps) {
+}: CardCreateProps & handleAddItemToCartType) {
   return (
     <>
       {vegetables.map((elem) => {
         return (
           <Card
-            data-testid={elem.vegetableName}
+            data-testid={elem.name}
             key={elem.id}
             shadow="md"
             padding="lg"
@@ -31,9 +36,9 @@ function ReadyCard({
             <Center p="xs">
               <Group w="100%" justify="space-between">
                 <Flex gap={4} align="center">
-                  <Text size="16px">{elem.vegetableName}</Text>
+                  <Text size="16px">{elem.name}</Text>
                   <Text color="gray" size="xs">
-                    {elem.minWeight}
+                    {elem.weight}
                   </Text>
                 </Flex>
                 <ButtonPlusMinus
