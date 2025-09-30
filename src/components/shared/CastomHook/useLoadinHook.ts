@@ -23,14 +23,13 @@ export default function useLoadingHook(): LoadingHookType {
   const [newError, setNewError] = useState<string>("");
 
   useEffect(() => {
-    // try {
     fetch(
-      "https://res.cloudinary.com/siSvadass/raw/upload/v1535817394/json/products.json"
+      "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json"
     )
       .then((response) => {
-        if (response.ok)
+        if (!response.ok)
           throw new Error(
-            "Кажется все овощи сбежали от нас, а мы не смогли их поймать, попробуйте позже."
+            "Кажется все овощи сбежали от нас, а вы не смогли их поймать, попробуйте позже."
           );
         return response.json();
       })

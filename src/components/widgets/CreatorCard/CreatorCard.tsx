@@ -36,7 +36,7 @@ function CreatorCard({
   if (loading) {
     return <LoadingCard />;
   }
-  if (newError)
+  if (newError) {
     return (
       <Center w="80vw">
         <Alert w={450} h={120} variant="filled" color="red" title="Ошибка :С">
@@ -44,6 +44,7 @@ function CreatorCard({
         </Alert>
       </Center>
     );
+  }
   return (
     <ReadyCard
       vegetables={vegetables}
